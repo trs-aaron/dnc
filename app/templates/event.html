@@ -1,0 +1,12 @@
+<!--NEW ADDITION PROPOSED - THIS ENTIRE FILE-->
+<h1>{{event.name}}</h1>
+
+<p>{{event.description}}</p>
+
+<p>{{event.start_date}}</p>
+
+{% if event.locations %}
+    {% for l in event.locations %}
+        <p>{{ l.name }} | {{l.address1}} / {{l.city}}, {{l.state}}</p>
+    {% endfor %}
+{% endif %}

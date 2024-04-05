@@ -1,0 +1,37 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+alembic = "*"
+aniso8601 = "*"
+certifi = "*"
+chardet = "*"
+click = "*"
+flask-marshmallow = "*"
+flask-restplus = "*"
+idna = "*"
+itsdangerous = "*"
+jsonschema = "*"
+marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+python-dateutil = "*"
+python-editor = "*"
+pytz = "*"
+requests = "*"
+six = "*"
+urllib3 = "*"
+Flask = "*"
+Flask-Cors = "*"
+Flask-SQLAlchemy = "*"
+Jinja2 = "*"
+Mako = "*"
+MarkupSafe = "*"
+SQLAlchemy = "*"
+Werkzeug = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
