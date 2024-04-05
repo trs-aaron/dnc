@@ -1,14 +1,27 @@
 # Your Code Review
 
-In this file, please replace all this text with a review of all the code that has recently been added (marked with comments `NEW ADDITION PROPOSED` in the code files).
+## `app/routes.py`
 
-Assume you'll share this review with another person who recently added that code. Identify any bugs that were introduced, and make any other comments on that code (functional, stylistic, things to think about in the future) that you want to share. This isn't a trick question -- we're genuinely interested in your thoughts and how you'd share them in writing with another engineer.
+### Line 12:
+- `.filter_by` should be called here instead of `.filter`
+- There is an extra '=' in `.filter` invocation.
+###### SHOULD BE:
+`.filter_by(locations.state=state)`
 
-Being brief is ideal! We're not expecting more than a couple hundred words or so.
+### Line 13:
+- `events_to_list` is not used, could be removed.
 
-This is a markdown file -- you can check out https://guides.github.com/features/mastering-markdown/ if you want to learn about how to style text in Markdown.
+### Line 18:
+- You cannot call `.first` on `.query` directly. Need to add a `.filter_by` statement.
+- There is an extra '=' in `.filter` invocation.
+###### SHOULD BE:
+`events.query.filter_by(id=id).first()`
 
+### Line 19:
+- `render_template` doesn't accept a `event_shown` parameter, correct parameter name is `event`
+- There is no space between the `template_name` and `event_shown` parameters. Might want to add one to keep consistent with code base.
+###### SHOULD BE:
+`render_template('event.html', event=event)`
 
-
-
-
+### Line 10 & 16:
+- Some browsers add a '/' to the end of the URL. Might want to add it to path pattern to catch those cases.

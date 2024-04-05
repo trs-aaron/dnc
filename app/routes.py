@@ -7,13 +7,12 @@ def index():
     return render_template('base.html')
 
 # NEW ADDITION PROPOSED - ALL CODE BELOW THIS LINE
-@app.route('/event-list/<state>')
+@app.route('/event-list/<state>/')
 def show_event_list(state):
-    state_events = events.query.join(locations).filter(locations.state==state).all()
-    events_to_list = state_events
+    state_events = events.query.join(locations).filter_by(state=state).all()
     return render_template('events.html', events=state_events, state=state)
     
-@app.route('/event/<id>')
+@app.route('/event/<id>/')
 def show_event(id):
-    event = events.query.first()
-    return render_template('event.html',event_shown=event)
+    event = events.query.filter_by(id=id).first()
+    return render_template('event.html', event=event)
