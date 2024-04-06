@@ -87,6 +87,22 @@ The API will be live at `http://127.0.0.1:5000/`.
 
 ## Endpoints
 
+### `/api/contacts` (`GET`)
+
+List all contacts.
+
+#### Sample request
+
+`curl http://localhost:5000/api/contacts/`
+
+### `/api/contacts/<id>` (`GET`)
+
+List individual contact detail by ID.
+
+#### Sample request
+
+`curl http://localhost:5000/api/contacts/7/`
+
 ### `/api/events` (`GET`)
 
 List all events.
@@ -103,7 +119,45 @@ List individual event detail by ID.
 
 `curl http://localhost:5000/api/events/7/`
 
+### `/api/locations` (`GET`)
+
+List all locations.
+
+#### Sample request
+
+`curl http://localhost:5000/api/locations/`
+
+### `/api/locations/<id>` (`GET`)
+
+List individual location detail by ID.
+
+#### Sample request
+
+`curl http://localhost:5000/api/locations/7/`
+
+### `/api/rsvps` (`GET`)
+
+List all rsvps.
+
+#### Sample request
+
+`curl http://localhost:5000/api/rsvps/`
+
+### `/api/rsvps/<id>` (`GET`)
+
+List individual rsvp detail by ID.
+
+#### Sample request
+
+`curl http://localhost:5000/api/rsvps/7/`
+
 ## Additional documentation (feel free to edit)
 
-TODO add
+### Database Migrations
 
+#### 1) create_contact_rsvps_table.sql
+
+- Creates `contacts` table.
+- Creates `rsvps` table.
+
+>Tables already created in `data.db`

@@ -1,0 +1,22 @@
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <div>
+        <h1 xmlns="http://www.w3.org/1999/html">RSVP - {{form.event.name}}</h1>
+        <p>{{form.event.description}}</p>
+        <p>{{form.event.start_date}}</p>
+        <p>{{form.location.name }} | {{form.location.address1}} / {{form.location.city}}, {{form.location.state}}</p>
+    </div>
+    <form method="POST"
+          action="/event/{{form.event.id}}/{{form.location.id}}/rsvp"
+          style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 25rem; max-width: 100%;">
+        {{form.csrf_token}}
+        {% for field in [form.family_name, form.given_name, form.email, form.phone] %}
+        <div style="width: 100%">
+            <div>{{field.label}}</div>
+            <div style="width: 100%">{{field(style="width: 100%")}}</div>
+        </div>
+        {% endfor %}
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <input type="submit" value="RSVP" style="padding: 0.5rem 0.5rem; width: 100%; max-width: 10rem;">
+        </div>
+    </form>
+</div>

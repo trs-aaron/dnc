@@ -1,12 +1,25 @@
 <!--NEW ADDITION PROPOSED - THIS ENTIRE FILE-->
-<h1>{{event.name}}</h1>
+{% if is_attending %}
+<h3 style="color: white; background-color: blue; margin: 0; padding: 1rem;">You have RSVP'd this event.</h3>
+{% endif %}
+
+<h1 xmlns="http://www.w3.org/1999/html">{{event.name}}</h1>
 
 <p>{{event.description}}</p>
 
 <p>{{event.start_date}}</p>
 
 {% if event.locations %}
-    {% for l in event.locations %}
+<div style="display: flex; flex-direction: column; width: fit-content">
+{% for l in locations %}
+    <div style="display: flex; flex-grow: 1; align-items: center; justify-content: space-between; gap: 1rem;">
         <p>{{ l.name }} | {{l.address1}} / {{l.city}}, {{l.state}}</p>
-    {% endfor %}
+        {% if not is_attending %}
+        <a href="/event/{{l.event_id}}/{{l.id}}/rsvp">
+            <button style="padding: 0.5rem 1rem;" {% if not l.spaces_remaining %}disabled{% endif %}>RSVP</button>
+        </a>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
 {% endif %}
